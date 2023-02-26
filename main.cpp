@@ -62,11 +62,30 @@ void avvia_gara(){
         }
     }
 
+    fstream fout(FILE_NAME, ios::app);
+    for(int i = 0; i < n_part; i++){
+        fout << partecipanti[i].cognome << ", " << partecipanti[i].matricola << ", " << partecipanti[i].tot_dist << "m, ";
+        for(int c = 0; c < 30; c++){
+            fout << partecipanti[i].x[c] << ";" << partecipanti[i].y[c]; 
+        }
+        fout << "\n";
+    }    
+    fout.close();
 
-    
+    cout << endl << "La gara é stata completata" << endl;
 }
 
 
+
+/*!
+    \fn delete_file
+    \brief funzione per eliminare il contenuto del file 'dati.txt'
+*/
+void delete_file(){
+    fstream fout(FILE_NAME, ios::out);
+    fout << "";
+    fout.close();
+}
 
 /*!
     \fn menu
@@ -88,6 +107,7 @@ short menu(){
 
                 break;
             case 4:
+                delete_file();
                 return 0;
         }
     }
