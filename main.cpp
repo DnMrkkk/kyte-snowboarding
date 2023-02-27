@@ -88,13 +88,59 @@ void delete_file(){
 }
 
 /*!
+    \fn podio
+    \brief per stampare il podio
+*/
+void podio(){
+
+    int pos[n_part];
+    for(int i = 0; i < n_part; i++){
+            pos[i] = partecipanti[i].tot_dist;
+    }
+
+    int max = 0, index; 
+
+        for(int i = 0; i < n_part; i++){
+            if(pos[i] >= max){
+                index = i;
+                max = pos[i];
+            }
+        }
+
+    cout << "1- " << partecipanti[index].cognome << " " << max << "m" << endl;
+    pos[index] = 0;
+    max = 0;
+
+    for(int i = 0; i < n_part; i++){
+        if(pos[i] >= max){
+            index = i;
+            max = pos[i];
+        }
+    }
+    
+    cout << "2- " << partecipanti[index].cognome << " " << max << "m" << endl;
+    pos[index] = 0;
+    max = 0;
+
+    for(int i = 0; i < n_part; i++){
+        if(pos[i] >= max){
+            index = i;
+            max = pos[i];
+        }
+    }
+    cout << "3- " << partecipanti[index].cognome << " " << max << "m" << endl;
+    
+}
+
+
+/*!
     \fn menu
     \brief menu'
 */
 short menu(){
     int scelta;
     while(true){
-        cout << "1-Inserisci cognome partecipante(max 20)\n2-Avvia gara\n3-Visualizza classifica\n4-Esci\n>> ";
+        cout << "1-Inserisci cognome partecipante(max 20)\n2-Avvia gara\n3-Visualizza podio\n4-Esci\n>> ";
         cin >> scelta;
         switch(scelta){
             case 1:
@@ -104,7 +150,7 @@ short menu(){
                 avvia_gara();
                 break;
             case 3:
-
+                podio();
                 break;
             case 4:
                 delete_file();
@@ -118,6 +164,7 @@ short menu(){
     \brief dove tutto ebbe inizio
 */
 int main(){
+    srand(time(NULL));
     menu();
     return 0;
 }
