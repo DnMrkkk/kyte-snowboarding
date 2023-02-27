@@ -72,7 +72,7 @@ void avvia_gara(){
     }    
     fout.close();
 
-    cout << endl << "La gara é stata completata" << endl;
+    cout << endl << "La gara e' stata completata" << endl << endl;
 }
 
 
@@ -132,6 +132,15 @@ void podio(){
     
 }
 
+/*!
+    \fn risultati
+    \brief per visualizzare tutti i risultati
+*/
+void risultati(){
+    for(int i = 0; i < n_part; i++){
+        cout << partecipanti[i].cognome << " " << partecipanti[i].matricola << " " << partecipanti[i].tot_dist << "m" << endl;
+    }
+}
 
 /*!
     \fn menu
@@ -140,7 +149,7 @@ void podio(){
 short menu(){
     int scelta;
     while(true){
-        cout << "1-Inserisci cognome partecipante(max 20)\n2-Avvia gara\n3-Visualizza podio\n4-Esci\n>> ";
+        cout << "1-Inserisci partecipanti(max 20)\n2-Avvia gara\n3-Visualizza podio\n4-Visualizza risultati\n5-Esci\n>> ";
         cin >> scelta;
         switch(scelta){
             case 1:
@@ -153,6 +162,9 @@ short menu(){
                 podio();
                 break;
             case 4:
+                risultati();
+                break;
+            case 5:
                 delete_file();
                 return 0;
         }
